@@ -43,7 +43,7 @@
     background-blend-mode: lighten;
 
     & #write {
-        background-color: var(--textarea-div-color-light-2);
+        background-color: var(--background-color-light-2);
         caret-color: var(--background-color-dark);
     }
 
@@ -59,7 +59,7 @@
     background-color: var(--background-color-light-2);
 
     & #write {
-        background-color: var(--textarea-div-color-light);
+        background-color: var(--background-color-light-2);
         caret-color: var(--background-color-light);
     }
 
