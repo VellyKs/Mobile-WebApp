@@ -1,8 +1,77 @@
 :root {
-    --background-color-light: #f9b0c3;
+    --background-color-light: #FABFCF;
     --background-color-dark: #46467a;
-    --textarea-div-color: #E0DFFD
+    --textarea-div-color-dark: #E0DFFD;
+    --textarea-div-color-light: #7766C6;
+
 }
+
+@media screen and (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--background-color-dark);
+        background-blend-mode: lighten;
+
+        & #write {
+            background-color: var(--textarea-div-color-dark);
+        }
+
+        & #logo {
+            background-color: var(--background-color-dark);
+
+            & img {
+                mix-blend-mode: lighten;
+            }
+        }
+    }
+
+}
+
+#logo {
+    width: 80%;
+
+    & img {
+        width: 100%;
+        mix-blend-mode: lighten;
+        display: none;
+    }
+}
+
+
+[data-theme="dark"] body {
+    background-color: var(--background-color-dark);
+    background-blend-mode: lighten;
+
+    & #write {
+        background-color: var(--textarea-div-color-dark);
+        caret-color: var(--background-color-dark);
+    }
+
+    & #logo {
+        background-color: var(--background-color-dark);
+
+    }
+
+}
+
+
+[data-theme="light"] body {
+    background-color: var(--background-color-light);
+
+    & #write {
+        background-color: var(--textarea-div-color-light);
+        caret-color: var(--background-color-light);
+    }
+
+    & #logo {
+        background-color: var(--background-color-light);
+
+        & #lightlogo {
+            mix-blend-mode: normal;
+        }
+
+    }
+}
+
 
 html,
 body,
@@ -10,7 +79,6 @@ div {
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
     font: inherit;
     vertical-align: baseline;
 }
@@ -24,33 +92,26 @@ input {
     html,
     body {
         min-width: 320px;
-        max-width: 480px;
 
     }
 }
 
-html {
+
+body {
     background-image: url(images/Symmetry\ Symptom.gif);
     background-color: var(--background-color-light);
     background-repeat: repeat;
     background-attachment: fixed;
     background-blend-mode: lighten;
     height: 100%;
-    
-
-}
-
-@media screen and (prefers-color-scheme: dark) {
-    html {
-        background-color: var(--background-color-dark);
-    }
-}
-
-body {
     padding: 2rem;
     padding-block: 4rem;
-    height: 100%;
+    
 }
+
+
+
+
 
 #wrapper {
     display: flex;
@@ -58,16 +119,7 @@ body {
     align-items: center;
 }
 
-#logo {
 
-    background-color: var(--background-color-dark);
-    width: 70%;
-
-    & img {
-        width: 100%;
-        mix-blend-mode: lighten;
-    }
-}
 
 #input-div {
     display: flex;
@@ -75,7 +127,7 @@ body {
     align-items: center;
     border-radius: 2%;
     height: 6rem;
-    margin: 4rem;
+
 
     & img {
         width: 3rem;
@@ -83,24 +135,24 @@ body {
 
     & #write {
         width: 100%;
-        background-color: var(--textarea-div-color);
         display: flex;
         justify-content: center;
         border-radius: 1rem;
         padding: 0.5rem;
-    }
 
-    & textarea#new {
-        font-size: 12px;
-        height: 2rem;
-        background-color: transparent;
-        border: none;
-        overflow: hidden;
-    }
 
-    & textarea#new:focus {
-        outline: none !important;
-        
+        & textarea#new {
+            font-size: 12px;
+            height: 2rem;
+            background-color: transparent;
+            border: none;
+            overflow: hidden;
+        }
 
+        & textarea#new:focus {
+            outline: none !important;
+
+
+        }
     }
 }
