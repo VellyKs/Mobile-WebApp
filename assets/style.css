@@ -13,7 +13,7 @@
         background-blend-mode: lighten;
 
         & #write {
-            background-color: var(--textarea-div-color-dark);
+            background-color: var(--background-color-light-2);
         }
 
         & #logo {
@@ -59,12 +59,12 @@
     background-color: var(--background-color-light-2);
 
     & #write {
-        background-color: var(--background-color-light-2);
+        background-color: var(--textarea-div-color-light);
         caret-color: var(--background-color-light);
     }
 
     & #logo {
-        background-color: var(--background-color-light);
+        background-color: var(--background-color-light-2);
 
         & #lightlogo {
             mix-blend-mode: normal;
