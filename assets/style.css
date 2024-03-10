@@ -44,8 +44,10 @@
 
     & #write {
         background-color: var(--background-color-light-2);
+        & textarea#new {
         caret-color: var(--background-color-dark);
         color: var(--background-color-light-2);
+    }
     }
 
     & #logo {
@@ -57,13 +59,15 @@
 
 
 [data-theme="light"] body {
-    background-image: url(images/claro3.gif);
+    background-image: url(images/Symmetry\ Symptom.gif);
     background-color: var(--background-color-light-2);
 
     & #write {
-        background-color: var(--textarea-div-color-light);
+        background-color: var(--textarea-div-color-light)
+        & textarea#new {
+        color: var(--background-color-light-2)
         caret-color: var(--background-color-light);
-        color: var(--background-color-light-2);
+        }
     }
 
     & #logo {
