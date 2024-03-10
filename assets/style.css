@@ -1,5 +1,6 @@
 :root {
     --background-color-light: #FABFCF;
+    --background-color-light-2: #f0f2cf
     --background-color-dark: #46467a;
     --textarea-div-color-dark: #E0DFFD;
     --textarea-div-color-light: #7766C6;
@@ -42,7 +43,7 @@
     background-blend-mode: lighten;
 
     & #write {
-        background-color: var(--textarea-div-color-dark);
+        background-color: var(--textarea-div-color-light-2);
         caret-color: var(--background-color-dark);
     }
 
@@ -55,7 +56,7 @@
 
 
 [data-theme="light"] body {
-    background-color: var(--background-color-light);
+    background-color: var(--background-color-light-2);
 
     & #write {
         background-color: var(--textarea-div-color-light);
