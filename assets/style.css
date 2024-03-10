@@ -45,7 +45,7 @@
     & #write {
         background-color: var(--background-color-light-2);
         & textarea#new {
-        caret-color: var(--background-color-dark);
+        caret-color: var(--background-color-light);
         color: var(--background-color-dark);
     }
     }
@@ -67,7 +67,7 @@
         
         & textarea#new {
         color: var(--background-color-light-2);
-        caret-color: var(--background-color-dark);
+        caret-color: var(--background-color-light);
         }
     }
 
