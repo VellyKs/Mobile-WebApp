@@ -45,6 +45,7 @@
     & #write {
         background-color: var(--background-color-light-2);
         caret-color: var(--background-color-dark);
+        color: var(--background-color-light-2);
     }
 
     & #logo {
@@ -61,6 +62,7 @@
     & #write {
         background-color: var(--textarea-div-color-light);
         caret-color: var(--background-color-light);
+        color: var(--background-color-dark);
     }
 
     & #logo {
