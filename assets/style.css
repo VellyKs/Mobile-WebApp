@@ -92,7 +92,7 @@ div {
     vertical-align: baseline;
 }
 
-input {
+input, textarea {
     all: unset;
 }
 
@@ -156,6 +156,7 @@ body {
             background-color: transparent;
             border: none;
             overflow: hidden;
+            
         }
 
         & textarea#new:focus {
