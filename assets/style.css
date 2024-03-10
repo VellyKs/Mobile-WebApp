@@ -57,6 +57,7 @@
 
 
 [data-theme="light"] body {
+    background-image: url(images/claro2.gif);
     background-color: var(--background-color-light-2);
 
     & #write {
