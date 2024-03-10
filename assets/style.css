@@ -1,0 +1,106 @@
+:root {
+    --background-color-light: #f9b0c3;
+    --background-color-dark: #46467a;
+    --textarea-div-color: #E0DFFD
+}
+
+html,
+body,
+div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+input {
+    all: unset;
+}
+
+@media screen and (max-width: 480px) {
+
+    html,
+    body {
+        min-width: 320px;
+        max-width: 480px;
+
+    }
+}
+
+html {
+    background-image: url(images/Symmetry\ Symptom.gif);
+    background-color: var(--background-color-light);
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-blend-mode: lighten;
+    height: 100%;
+    
+
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    html {
+        background-color: var(--background-color-dark);
+    }
+}
+
+body {
+    padding: 2rem;
+    padding-block: 4rem;
+    height: 100%;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#logo {
+
+    background-color: var(--background-color-dark);
+    width: 70%;
+
+    & img {
+        width: 100%;
+        mix-blend-mode: lighten;
+    }
+}
+
+#input-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 2%;
+    height: 6rem;
+    margin: 4rem;
+
+    & img {
+        width: 3rem;
+    }
+
+    & #write {
+        width: 100%;
+        background-color: var(--textarea-div-color);
+        display: flex;
+        justify-content: center;
+        border-radius: 1rem;
+        padding: 0.5rem;
+    }
+
+    & textarea#new {
+        font-size: 12px;
+        height: 2rem;
+        background-color: transparent;
+        border: none;
+        overflow: hidden;
+    }
+
+    & textarea#new:focus {
+        outline: none !important;
+        
+
+    }
+}
