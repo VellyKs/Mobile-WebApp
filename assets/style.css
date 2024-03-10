@@ -46,7 +46,7 @@
         background-color: var(--background-color-light-2);
         & textarea#new {
         caret-color: var(--background-color-dark);
-        color: var(--background-color-light-2);
+        color: var(--background-color-dark);
     }
     }
 
@@ -72,7 +72,7 @@
     }
 
     & #logo {
-        background-color: var(--background-color-light-2);
+        background-color: var(--background-color-light);
 
         & #lightlogo {
             mix-blend-mode: normal;
