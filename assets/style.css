@@ -60,13 +60,14 @@
 
 [data-theme="light"] body {
     background-image: url(images/Symmetry\ Symptom.gif);
-    background-color: var(--background-color-light-2);
+    background-color: var(--background-color-light);
 
     & #write {
-        background-color: var(--textarea-div-color-light)
+        background-color: var(--textarea-div-color-light);
+        
         & textarea#new {
-        color: var(--background-color-light-2)
-        caret-color: var(--background-color-light);
+        color: var(--background-color-dark)
+        caret-color: var(--background-color-dark);
         }
     }
 
