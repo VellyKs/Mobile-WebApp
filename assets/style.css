@@ -16,20 +16,22 @@
             background-color: var(--background-color-light-2);
         }
 
-        & #logo {
+        & .logo {
             background-color: var(--background-color-dark);
 
             & img {
                 mix-blend-mode: lighten;
+            object-fit: cover;  
+
             }
         }
     }
 
 }
 
-#logo {
+.logo {
     width: 80%;
-
+   
     & img {
         width: 100%;
         mix-blend-mode: lighten;
@@ -44,14 +46,18 @@
 
     & #write {
         background-color: var(--background-color-light-2);
-        & textarea#new {
+        & #new {
         caret-color: var(--background-color-light);
         color: var(--background-color-dark);
     }
     }
 
-    & #logo {
+    & #logoescura {
         background-color: var(--background-color-dark);
+        
+        & #darklogo{
+            object-fit: cover;
+        }
 
     }
 
@@ -65,17 +71,19 @@
     & #write {
         background-color: var(--textarea-div-color-light);
         
-        & textarea#new {
+        & #new {
         color: var(--background-color-light-2);
         caret-color: var(--background-color-light);
         }
     }
 
-    & #logo {
+    & #logoclara {
         background-color: var(--background-color-light);
 
         & #lightlogo {
             mix-blend-mode: normal;
+            object-fit: cover;
+
         }
 
     }
@@ -123,6 +131,7 @@ body {
 
 
 #wrapper {
+    height: max-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -136,6 +145,7 @@ body {
     align-items: center;
     border-radius: 2%;
     height: 6rem;
+    width: 100%;
 
 
     & img {
@@ -143,23 +153,24 @@ body {
     }
 
     & #write {
-        width: 100%;
+        width: 80%;
         display: flex;
         justify-content: center;
         border-radius: 1rem;
-        padding: 0.5rem;
+        padding-inline: 1rem;
+        padding-block: 0.5rem;
+        height: 2rem;
 
-
-        & textarea#new {
+        & #new {
             font-size: 18px;
-            height: 3rem;
+            width: 100%;
             background-color: transparent;
             border: none;
             overflow: hidden;
             
         }
 
-        & textarea#new:focus {
+        & #new:focus {
             outline: none !important;
 
 

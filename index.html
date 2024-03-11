@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crystal-Moon</title>
     <link rel="stylesheet" href="assets/style.css" type="text/css">
 </head>
-<body id="corpo" >
+
+<body id="corpo">
     <button id="darkLight" type="button" onclick="change()">Modo</button>
     <!-- <input type="checkbox" id="modo"> -->
     <div id="wrapper">
-        <div id="logo">
+
+        <div class="logo" id="logoescura">
             <img id="darklogo" src="assets/images/escuro.png" alt="">
+        </div>
+        <div class="logo" id="logoclara">
             <img id="lightlogo" src="assets/images/claro.png" alt="">
         </div>
         <div id="input-div">
             <div id="write">
-                <textarea name="novo-sonho" id="new" cols="35" rows="1"></textarea>
+                <!-- <textarea name="novo-sonho" id="new" cols="35" rows="1"></textarea> -->
+                <input type="text" id="new" name="novo-sonho" placeholder="Descreva seu sonho">
             </div>
             <img src="assets/images/Frame 5.png" alt="">
         </div>
     </div>
 </body>
 <script src="main.js"></script>
+
 </html>
