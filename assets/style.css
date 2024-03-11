@@ -7,6 +7,61 @@
 
 }
 
+/*------ Settings ------*/
+.container {
+  --size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: var(--size);
+  user-select: none;
+}
+
+.container .moon {
+  position: absolute;
+  animation: keyframes-fill .5s;
+    fill: var(--background-color-light);
+}
+
+.container .sun {
+  position: absolute;
+  display: none;
+  animation: keyframes-fill .5s;
+    fill: var(--background-color-dark);
+}
+
+/* ------ On check event ------ */
+.container input:checked ~ .moon {
+  display: none;
+}
+
+.container input:checked ~ .sun {
+  display: block;
+}
+
+/* ------ Hide the default checkbox ------ */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* ------ Animation ------ */
+@keyframes keyframes-fill {
+  0% {
+    transform: rotate(-360deg) scale(0);
+    opacity: 0;
+  }
+
+  75% {
+    transform: rotate(25deg);
+  }
+}
+
 @media screen and (prefers-color-scheme: dark) {
     body {
         background-color: var(--background-color-dark);
@@ -167,7 +222,9 @@ body {
             background-color: transparent;
             border: none;
             overflow: hidden;
-            
+
+            & ::placeholder {
+                color: var(--background-color-light);
         }
 
         & #new:focus {
