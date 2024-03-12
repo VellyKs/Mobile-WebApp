@@ -2,9 +2,13 @@
 var toggle = document.getElementById("darkLight");
 
 var storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    
 if (storedTheme)
     document.documentElement.setAttribute('data-theme', storedTheme)
 change(storedTheme);
+
+const themee = toggle.getAttribute("value");
+console.log(themee);
 
 toggle.onclick = function () {
     var currentTheme = document.documentElement.getAttribute("data-theme");
@@ -23,6 +27,7 @@ toggle.onclick = function () {
 function change(theme) {
     if (theme === "dark") {
         document.querySelector("#darklogo").setAttribute("style", "display: block")
+        // document.querySelector(".conteiner .moon").setAttribute("style", "display: none")
         document.querySelector("#lightlogo").setAttribute("style", "display: none")
     }
     if (theme === "light") {
