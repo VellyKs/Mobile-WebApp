@@ -62,7 +62,7 @@
     }
 }
 
-@media screen and (prefers-color-scheme: dark) {
+/* @media screen and (prefers-color-scheme: dark) {
     body {
         background-color: var(--background-color-dark);
         background-blend-mode: lighten;
@@ -82,7 +82,7 @@
         }
     }
 
-}
+} */
 
 .logo {
     width: 80%;
