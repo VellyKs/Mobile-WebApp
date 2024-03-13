@@ -1,6 +1,8 @@
 :root {
     --background-color-light: #FABFCF;
-    --background-color-light-2: #f0f2cf;
+    --background-color-light-2: #f0f2cf ;
+    --background-color-light-3: #F4EBDC;
+    --background-color-contrast: #FBC40F;
     --background-color-dark: #46467a;
     --textarea-div-color-dark: #E0DFFD;
     --textarea-div-color-light: #7766C6;
@@ -100,19 +102,25 @@
     background-blend-mode: lighten;
 
     & #write {
-        background-color: var(--background-color-light-2);
+        background-color: var(--background-color-light-3);
 
         & #new {
-            caret-color: var(--background-color-light);
+            caret-color: var(--background-color-dark);
             color: var(--background-color-dark);
         }
+    }
+
+    #new::placeholder{
+        color: var(--textarea-div-color-light);
     }
 
     & #logoescura {
         background-color: var(--background-color-dark);
 
         & #darklogo {
+            display: none;
             object-fit: cover;
+            transition: display .2s;
         }
 
     }
@@ -128,17 +136,25 @@
         background-color: var(--textarea-div-color-light);
 
         & #new {
-            color: var(--background-color-light-2);
-            caret-color: var(--background-color-light);
+            color: var(--background-color-dark);
+            /* caret-color: var(--background-color-light); */
         }
+    }
+
+    #new::placeholder{
+        color: var(--background-color-light);
     }
 
     & #logoclara {
         background-color: var(--background-color-light);
+        transition: all 1s ease-in;
+        
 
         & #lightlogo {
+            display: none;
             mix-blend-mode: normal;
             object-fit: cover;
+            transition: display .2s;
 
         }
 
@@ -180,7 +196,19 @@ body {
     height: 100%;
     padding: 2rem;
     padding-block: 4rem;
+    transition: background 500ms;
 
+}
+
+@keyframes fade-logo{
+    0% {
+        opacity: 0%;
+        
+    }
+
+    75% {
+        transform: rotate(25deg);
+    }
 }
 
 
@@ -198,7 +226,7 @@ body {
 
 #input-div {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     border-radius: 2%;
     height: 6rem;
@@ -234,6 +262,3 @@ body {
     }
 }
 
-#new::placeholder{
-    color: var(--background-color-light);
-}
