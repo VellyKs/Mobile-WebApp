@@ -6,7 +6,8 @@
     --background-color-dark: #46467a;
     --textarea-div-color-dark: #E0DFFD;
     --textarea-div-color-light: #7766C6;
-
+    --background-li: #AE8BC9;
+    --font-li: #F4EBDC;
 }
 
 /*------ Settings ------*/
@@ -101,9 +102,15 @@
 [data-theme="dark"] body {
     background-color: var(--background-color-dark);
     background-blend-mode: lighten;
+    --font-li: #F4EBDC;
+    --background-li: #7866c696;
 
     & #write {
         background-color: var(--background-color-light-3);
+
+        & svg {
+            fill: var(--background-color-dark)
+        }
 
         & #new {
             caret-color: var(--background-color-dark);
@@ -120,7 +127,6 @@
 
 
         & #darklogo {
-            display: none;
             object-fit: cover;
         }
 
@@ -132,11 +138,17 @@
 [data-theme="light"] body {
     background-image: url(images/Symmetry\ Symptom.gif);
     background-color: var(--background-color-light);
+    --font-li: #f0f2cf;
+    
 
     & #write {
-        background-color: var(--textarea-div-color-light);
-        
-        
+        background-color: var(--background-color-light-3);
+        border: 2px solid var(--textarea-div-color-light);
+
+        & svg {
+            fill: var(--textarea-div-color-light)
+        }
+
         & #new {
             color: var(--background-color-dark);
             /* caret-color: var(--background-color-light); */
@@ -144,7 +156,7 @@
     }
 
     #new::placeholder {
-        color: var(--background-color-light);
+        color: var(--background-color-dark);
     }
 
     & #logoclara {
@@ -152,8 +164,6 @@
 
 
         & #lightlogo {
-
-            display: none;
             mix-blend-mode: normal;
             object-fit: cover;
 
@@ -174,7 +184,10 @@ div {
 }
 
 input,
-textarea {
+textarea,
+li,
+ul,
+header {
     all: unset;
 }
 
@@ -195,25 +208,11 @@ body {
     background-attachment: fixed;
     background-blend-mode: lighten;
     height: 100%;
-    padding: 2rem;
-    padding-block: 4rem;
+    padding: 5%;
+    padding-block: 10%;
     transition: background 500ms;
 
 }
-
-@keyframes fade-logo {
-    0% {
-        opacity: 0%;
-
-    }
-
-    75% {
-        transform: rotate(25deg);
-    }
-}
-
-
-
 
 
 #wrapper {
@@ -258,6 +257,54 @@ body {
                 outline: none !important;
 
 
+            }
+        }
+    }
+}
+
+#div-lista{
+    margin-top: 8%;
+    list-style-type: none;
+    width: 100%;
+    padding: 2%;
+}
+
+#lista {
+    list-style-type: none;
+    border-radius: 2rem;
+    color: var(--font-li);
+    height: 100%;
+
+    & .itemLista {
+        padding: 2%;
+        display: flex;
+        justify-content: start;
+        margin-bottom: 3%;
+        border-radius: 2rem;
+        background-color: var(--background-li);
+        color: var(--font-li);
+
+        & .sonhoLista {
+            padding-inline: 2%;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            & .detail {
+                min-width: 30%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                & #duracao{
+                    display: flex;
+                    flex-direction: row;
+
+                    & #sleep{
+                        width: 1rem;
+                    }
+                }
             }
         }
     }
