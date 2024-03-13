@@ -1,19 +1,17 @@
 
+// Dark mode ----------------------------------------------------------------
+
 var toggle = document.getElementById("darkLight");
 
-
-
 var storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-
-
 
 if (storedTheme)
     document.documentElement.setAttribute('data-theme', storedTheme)
 change(storedTheme);
 var currentTheme = document.documentElement.getAttribute("data-theme");
-if (currentTheme === "dark"){
-toggle.checked = "true";
-} 
+if (currentTheme === "dark") {
+    toggle.checked = "true";
+}
 
 const themee = toggle.getAttribute("value");
 console.log(themee);
@@ -46,3 +44,8 @@ function change(theme) {
         document.querySelector("#lightlogo").setAttribute("style", "display: block")
     }
 }
+
+// Dark mode -------------------------------------------------------------------------
+
+
+
