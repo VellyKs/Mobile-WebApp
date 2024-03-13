@@ -1,6 +1,6 @@
 :root {
     --background-color-light: #FABFCF;
-    --background-color-light-2: #f0f2cf ;
+    --background-color-light-2: #f0f2cf;
     --background-color-light-3: #F4EBDC;
     --background-color-contrast: #FBC40F;
     --background-color-dark: #46467a;
@@ -93,6 +93,7 @@
         width: 100%;
         mix-blend-mode: lighten;
         display: none;
+        transition: all 500ms ease-in;
     }
 }
 
@@ -110,17 +111,17 @@
         }
     }
 
-    #new::placeholder{
+    #new::placeholder {
         color: var(--textarea-div-color-light);
     }
 
     & #logoescura {
-        background-color: var(--background-color-dark);
+        /* background-color: var(--background-color-dark); */
+
 
         & #darklogo {
             display: none;
             object-fit: cover;
-            transition: display .2s;
         }
 
     }
@@ -134,27 +135,27 @@
 
     & #write {
         background-color: var(--textarea-div-color-light);
-
+        
+        
         & #new {
             color: var(--background-color-dark);
             /* caret-color: var(--background-color-light); */
         }
     }
 
-    #new::placeholder{
+    #new::placeholder {
         color: var(--background-color-light);
     }
 
     & #logoclara {
-        background-color: var(--background-color-light);
-        transition: all 1s ease-in;
-        
+        /* background-color: var(--background-color-light); */
+
 
         & #lightlogo {
+
             display: none;
             mix-blend-mode: normal;
             object-fit: cover;
-            transition: display .2s;
 
         }
 
@@ -200,10 +201,10 @@ body {
 
 }
 
-@keyframes fade-logo{
+@keyframes fade-logo {
     0% {
         opacity: 0%;
-        
+
     }
 
     75% {
@@ -252,7 +253,7 @@ body {
             background-color: transparent;
             border: none;
             overflow: hidden;
-            
+
             & #new:focus {
                 outline: none !important;
 
@@ -261,4 +262,3 @@ body {
         }
     }
 }
-
