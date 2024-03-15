@@ -48,4 +48,8 @@ function change(theme) {
 // Dark mode -------------------------------------------------------------------------
 
 
+function trocarTela(){
+    window.location.href= "pages/novoSonho.html"
+}
+
 

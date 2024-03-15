@@ -50,7 +50,8 @@ ul,
 header,
 p,
 div,
-a {
+a,
+button {
   all: unset;
 }
 
