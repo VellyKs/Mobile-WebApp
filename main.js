@@ -48,8 +48,11 @@ function change(theme) {
 // Dark mode -------------------------------------------------------------------------
 
 
-function trocarTela(){
-    window.location.href= "pages/novoSonho.html"
+function openModal(){
+    const modal = document.querySelector(".modal")
+    modal.classList.add("active");
 }
+
+document.querySelector("#newInput").addEventListener("click", openModal());
 
 

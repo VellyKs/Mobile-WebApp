@@ -38,7 +38,7 @@
                     src="assets/images/claro-removebg-preview.png" alt>
             </div>
             <div id="input-div">
-                <input type="button" onclick="trocarTela()">
+                <input id="newInput" type="button" onclick="openModal()">
                     <div id="write">
                     <input type="text" id="new" name="novo-sonho"
                         placeholder="Registre seu sonho" disabled>
@@ -141,6 +141,13 @@
  <div id="nav">
      navvvvv
  </div>
+
+ <span class="modal">
+     <button id="closeModal">X</button>
+    <div class="textbox">
+        <textarea name="sonho" id="modalSonho" cols="25" rows="10" placeholder="ola"></textarea>
+    </div>
+</span>
         
         </div>
     </body>
