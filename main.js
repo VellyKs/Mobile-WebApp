@@ -46,14 +46,34 @@ function change(theme) {
 
 // Dark mode -------------------------------------------------------------------------
 
-const openModal =  document.querySelector("#newInput");
+var openModal =  document.querySelector("#newInput");
+var closeModal = document.querySelector("#closeModal");
+
+// openModal.onclick = function () {
+//     const modal = document.getElementById("modal");
+//     modal.style.display = "flex";
+// }
+
+window.onclick = function(event) {
+    if (event.target === openModal || event.target === openModal.children ) {
+        console.log(event.target);
+        const modal = document.getElementById("modal");
+        modal.style.display = "flex";
+    }
+  }
 
 
-console.log(openModal);
-openModal.onclick = function (){
-    var modal = document.querySelector(".modal");
-    modal.classList.add("active");
+
+closeModal.onclick = function () {
+    const modal = document.getElementById("modal");
+    modal.style.display = "none";
 }
+
+// console.log(openModal);
+// openModal.onclick = function (){
+//     var modal = document.querySelector(".modal");
+//     modal.classList.add("active");
+// }
 
 
 
