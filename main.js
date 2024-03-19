@@ -13,8 +13,7 @@ if (currentTheme === "dark") {
     toggle.checked = "true";
 }
 
-const themee = toggle.getAttribute("value");
-console.log(themee);
+
 
 toggle.onclick = function () {
     var currentTheme = document.documentElement.getAttribute("data-theme");
@@ -47,12 +46,16 @@ function change(theme) {
 
 // Dark mode -------------------------------------------------------------------------
 
+const openModal =  document.querySelector("#newInput");
 
-function openModal(){
-    const modal = document.querySelector(".modal")
+
+console.log(openModal);
+openModal.onclick = function (){
+    var modal = document.querySelector(".modal");
     modal.classList.add("active");
 }
 
-document.querySelector("#newInput").addEventListener("click", openModal());
+
+
 
 
