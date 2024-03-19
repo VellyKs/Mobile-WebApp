@@ -250,7 +250,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  filter: blur(0.5rem);
+  /* filter: blur(0.5rem); */
 }
 
 #input-div {
@@ -411,7 +411,8 @@ img#sleep {
 
   & #closeModal{
     display: flex;
-    align-self: right;
+    align-self:flex-end;
+    margin-inline: 2rem;
   }
   
   & .textbox {
