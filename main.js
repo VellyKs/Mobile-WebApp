@@ -46,21 +46,21 @@ function change(theme) {
 
 // Dark mode -------------------------------------------------------------------------
 
-var openModal =  document.querySelector("#newInput");
+var openModal =  document.querySelector("#new");
 var closeModal = document.querySelector("#closeModal");
 
-// openModal.onclick = function () {
-//     const modal = document.getElementById("modal");
-//     modal.style.display = "flex";
-// }
+openModal.onclick = function () {
+    const modal = document.getElementById("modal");
+    modal.style.display = "flex";
+}
 
-window.onclick = function(event) {
-    if (event.target === openModal || event.target === openModal.children ) {
-        console.log(event.target);
-        const modal = document.getElementById("modal");
-        modal.style.display = "flex";
-    }
-  }
+// window.onclick = function(event) {
+//     if (event.target === openModal || event.target === openModal.children ) {
+//         console.log(event.target);
+//         const modal = document.getElementById("modal");
+//         modal.style.display = "flex";
+//     }
+//   }
 
 
 
@@ -75,7 +75,9 @@ closeModal.onclick = function () {
 //     modal.classList.add("active");
 // }
 
-
+window.onclink = function(event) {
+    console.log(target.id);
+}
 
 
 
