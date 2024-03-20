@@ -90,11 +90,11 @@ h1 {
 }
 
 /* ------ On check event ------ */
-.container input:checked~.moon {
+.container input:checked ~ .moon {
   display: none;
 }
 
-.container input:checked~.sun {
+.container input:checked ~ .sun {
   display: block;
 }
 
@@ -222,7 +222,6 @@ h1 {
 }
 
 @media screen and (max-width: 480px) {
-
   html,
   body {
     min-width: 320px;
@@ -240,9 +239,6 @@ body {
   padding-block: 10%;
   transition: background 500ms;
   overflow: hidden;
-  
-  
-
 }
 
 #wrapper {
@@ -255,38 +251,52 @@ body {
 
 #input-div {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   border-radius: 2%;
   height: 6rem;
   width: 100%;
 
-  & img {
+  & svg {
     width: 3rem;
+  }
+
+  & #new {
+    font-size: 18px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    & #new:focus {
+      outline: none !important;
+    }
   }
 
   & #write {
     width: 80%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-self: center;
     border-radius: 1rem;
-    padding-inline: 1rem;
+    /* padding-inline: 1rem; */
     padding-block: 0.5rem;
     height: 2rem;
     cursor: pointer;
 
-    & #new {
-      font-size: 18px;
-      width: 100%;
-      background-color: transparent;
-      border: none;
-      overflow: hidden;
-
-      & #new:focus {
-        outline: none !important;
-      }
+    & h3{
+      font-family: "texto" ;
+      margin-block: 8px;
+      margin-inline: 1rem;
+      font-size: 14px;
+      font-weight: 100;
+      color: var(--font-data);
     }
+    
   }
+
 }
 
 #div-lista {
@@ -311,7 +321,6 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 
-
   & .itemLista {
     display: flex;
     flex-direction: column;
@@ -320,7 +329,6 @@ body {
     justify-content: start;
     margin-bottom: 3%;
     user-select: none;
-
 
     & .data h3 {
       color: var(--font-data);
@@ -394,11 +402,11 @@ img#sleep {
   position: fixed;
 }
 
-#modal{
+#modal {
   display: none;
   position: absolute;
   top: 50%;
-  left: 50%; 
+  left: 50%;
   transform: translate(-50%, -50%);
   background-color: var(--background-color-light-3);
   z-index: 1;
@@ -409,29 +417,43 @@ img#sleep {
   justify-content: top;
   flex-direction: column;
 
-  & #closeModal{
+  & #closeModal {
     display: flex;
-    align-self:flex-end;
-    margin-inline: 2rem;
+    justify-content: center;
+    align-self: end;
+    align-items: center;
+    margin-inline: 1rem;
+    margin-top: 0.5rem;
+    width: 2rem;
+
   }
-  
+
   & .textbox {
     display: flex;
     justify-content: center;
     width: 90%;
-    margin: 2rem;
-    margin-top: 2.5rem ;
+    margin: 1rem;
+    /* margin-top: 2.5rem; */
     height: 70%;
     border-radius: 1rem;
-    
+
     & textarea {
       background-color: #7766c6;
       width: 99%;
       border-radius: 0.5rem;
-      border: 7px solid var(--background-li);
+      border: 4px solid var(--background-li);
     }
   }
-} 
+
+  & .bottomModal{
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    align-self: flex-end;
+    width: 1.5rem;
+    margin-inline: 1rem;
+  }
+}
 
 .modal {
   display: none;
