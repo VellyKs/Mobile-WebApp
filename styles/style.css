@@ -22,12 +22,12 @@
 
 @font-face {
   font-family: "titulo";
-  src: url(../assets/fonts/Zilla_Slab/ZillaSlab-Regular.ttf);
+  src: url(../assets/fonts/Zilla_Slab/ZillaSlab-SemiBold.ttf);
 }
 
 @font-face {
   font-family: "detalhe";
-  src: url(../assets/fonts/Chivo/static/Chivo-LightItalic.ttf);
+  src: url(../assets/fonts/Chivo/static/Chivo-Medium.ttf);
 }
 
 html,
@@ -90,11 +90,11 @@ h1 {
 }
 
 /* ------ On check event ------ */
-.container input:checked ~ .moon {
+.container input:checked~.moon {
   display: none;
 }
 
-.container input:checked ~ .sun {
+.container input:checked~.sun {
   display: block;
 }
 
@@ -145,10 +145,11 @@ h1 {
   width: 80%;
 
   & img {
-    width: 100%;
+    width: 260px;
     mix-blend-mode: lighten;
     display: none;
     transition: all 500ms ease-in;
+    aspect-ratio: auto 140 / 260;
   }
 }
 
@@ -180,6 +181,10 @@ h1 {
 
   & #logoescura {
     /* background-color: var(--background-color-dark); */
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
 
     & #darklogo {
       object-fit: cover;
@@ -189,7 +194,8 @@ h1 {
 
 [data-theme="light"] body {
   background-color: var(--background-color-light);
-  --font-li: #f0f2cf;
+  --font-li: var(--background-color-light-3);
+  --background-li: var(--font-data);
 
   & #write {
     background-color: var(--background-color-light-3);
@@ -213,15 +219,21 @@ h1 {
 
   & #logoclara {
     /* background-color: var(--background-color-light); */
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
 
     & #lightlogo {
       mix-blend-mode: normal;
       object-fit: cover;
     }
   }
+  
 }
 
 @media screen and (max-width: 480px) {
+
   html,
   body {
     min-width: 320px;
@@ -229,15 +241,14 @@ h1 {
 }
 
 body {
-  background-image: url(../assets/images/background.gif);
-  background-color: var(--background-color-light);
+  background-image: url(../assets/images/background2.webp);
   background-repeat: repeat;
   background-attachment: fixed;
   background-blend-mode: lighten;
   height: 100%;
   padding: 5%;
   padding-block: 10%;
-  transition: background 500ms;
+  transition: background 300ms;
   overflow: hidden;
 }
 
@@ -270,6 +281,7 @@ body {
     overflow: hidden;
     display: flex;
     justify-content: center;
+
     & #new:focus {
       outline: none !important;
     }
@@ -299,7 +311,6 @@ body {
 
 #div-lista {
   position: relative;
-
   margin-top: 2%;
   list-style-type: none;
   width: 100%;
@@ -332,12 +343,13 @@ body {
     & .data {
       margin-bottom: 1rem;
 
-      & .data p {
+      & p {
         color: var(--font-data);
         font-family: "detalhe";
         font-size: 1em;
       }
     }
+
     & .sonhoLista {
       border-radius: 2rem;
       background-color: var(--background-li);
@@ -359,6 +371,7 @@ body {
 
       & .preview p {
         font-size: 14px;
+        font-weight: 300;
       }
 
       & .detail {
@@ -426,6 +439,7 @@ img#sleep {
     width: 90%;
     margin-inline: 1rem;
     margin-top: 0.5rem;
+
     & h3 {
       margin: 0px;
       font-family: "titulo";
