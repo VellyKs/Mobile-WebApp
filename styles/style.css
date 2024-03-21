@@ -5,7 +5,7 @@
   --background-color-contrast: #fbc40f;
   --background-color-dark: #46467a;
   --textarea-div-color-dark: #e0dffd;
-  --textarea-div-color-light: #7766c6;
+  --textarea-div-color-light: #544693;
   --background-li: #ae8bc9;
   --font-li: #f4ebdc;
   --font-data: #7766c6;
@@ -286,17 +286,15 @@ body {
     height: 2rem;
     cursor: pointer;
 
-    & h3{
-      font-family: "texto" ;
+    & h3 {
+      font-family: "texto";
       margin-block: 8px;
       margin-inline: 1rem;
       font-size: 14px;
       font-weight: 100;
-      color: var(--font-data);
+      color: var(--textarea-div-color-light);
     }
-    
   }
-
 }
 
 #div-lista {
@@ -328,14 +326,18 @@ body {
     display: flex;
     justify-content: start;
     margin-bottom: 3%;
+    -webkit-user-select: none;
     user-select: none;
 
-    & .data h3 {
-      color: var(--font-data);
-      font-family: "detalhe";
-      font-size: 1em;
-    }
+    & .data {
+      margin-bottom: 1rem;
 
+      & .data p {
+        color: var(--font-data);
+        font-family: "detalhe";
+        font-size: 1em;
+      }
+    }
     & .sonhoLista {
       border-radius: 2rem;
       background-color: var(--background-li);
@@ -417,15 +419,28 @@ img#sleep {
   justify-content: top;
   flex-direction: column;
 
+  & .topModal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin-inline: 1rem;
+    margin-top: 0.5rem;
+    & h3 {
+      margin: 0px;
+      font-family: "titulo";
+      color: var(--background-color-dark);
+    }
+  }
+
   & #closeModal {
     display: flex;
     justify-content: center;
-    align-self: end;
+    align-self: center;
     align-items: center;
-    margin-inline: 1rem;
-    margin-top: 0.5rem;
+    /* margin-inline: 0.5rem; */
+    /* margin-top: 0.5rem; */
     width: 2rem;
-
   }
 
   & .textbox {
@@ -442,16 +457,28 @@ img#sleep {
       width: 99%;
       border-radius: 0.5rem;
       border: 4px solid var(--background-li);
+      padding: 1rem;
+      color: var(--font-li);
+      font-family: "texto";
+    }
+
+    & ::placeholder {
+      color: var(--font-li);
     }
   }
 
-  & .bottomModal{
+  & .bottomModal {
     display: flex;
+    flex-direction: row;
     align-items: end;
-    justify-content: end;
+    justify-content: space-between;
     align-self: flex-end;
-    width: 1.5rem;
+    width: 90%;
     margin-inline: 1rem;
+
+    & .send {
+      width: 1.5rem;
+    }
   }
 }
 
