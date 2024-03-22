@@ -405,6 +405,7 @@ body {
 
 img#sleep {
   width: 1.5rem;
+  aspect-ratio: 1/2;
 }
 
 #bar {
