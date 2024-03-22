@@ -194,7 +194,7 @@ h1 {
 
 [data-theme="light"] body {
   background-color: var(--background-color-light);
-  --font-li: var(--background-color-light-3);
+  --font-li: #f5f4fb;
   --background-li: var(--font-data);
 
   & #write {
