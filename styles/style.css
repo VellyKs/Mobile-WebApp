@@ -230,13 +230,33 @@ h1 {
   
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
 
   html,
   body {
     min-width: 320px;
   }
+
+
+
+
+
+
 }
+
+
+@media (min-width: 600px){
+  #input-div{
+    max-width: 600px;
+  }
+
+  .itemLista{
+    padding: 10%;
+  }
+
+
+}
+
 
 body {
   background-image: url(../assets/images/background2.webp);
@@ -266,6 +286,7 @@ body {
   border-radius: 2%;
   height: 6rem;
   width: 100%;
+
 
   & svg {
     width: 3rem;
@@ -357,6 +378,8 @@ body {
       flex-direction: row;
       justify-content: space-between;
       cursor: pointer;
+      min-width: 300px;
+      max-width: 600px;
 
       & .preview {
         max-width: 75%;
@@ -443,6 +466,14 @@ img#sleep {
       margin: 0px;
       font-family: "titulo";
       color: var(--background-color-dark);
+      
+
+    }
+
+    & #sonhoTitulo{
+      border-bottom: 0.5px solid var(--background-color-dark);
+      width: min-content;
+      /* text-decoration: underline; */
     }
   }
 
@@ -483,7 +514,7 @@ img#sleep {
   & .bottomModal {
     display: flex;
     flex-direction: row;
-    align-items: end;
+    align-items: center;
     justify-content: space-between;
     align-self: flex-end;
     width: 90%;
@@ -492,9 +523,12 @@ img#sleep {
     & .send {
       width: 1.5rem;
     }
+
+    & p{
+      font-size: 12px;
+    }
   }
+  
 }
 
-.modal {
-  display: none;
-}
+
