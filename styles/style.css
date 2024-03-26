@@ -474,6 +474,11 @@ img#sleep {
       border-bottom: 0.5px solid var(--background-color-dark);
       width: min-content;
       /* text-decoration: underline; */
+      transition: color 200ms;
+    }
+
+    & input:focus::placeholder{
+      color: transparent;
     }
   }
 
@@ -520,7 +525,7 @@ img#sleep {
     width: 90%;
     margin-inline: 1rem;
 
-    & .send {
+    & #send {
       width: 1.5rem;
     }
 
