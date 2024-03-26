@@ -1,4 +1,4 @@
-
+// QUESTÕES DE ESTILO ---------------------------------------------------
 // Dark mode ----------------------------------------------------------------
 
 var toggle = document.getElementById("darkLight");
@@ -46,7 +46,7 @@ function change(theme) {
 
 // Dark mode -------------------------------------------------------------------------
 
-var openModal =  document.querySelector("#new");
+var openModal = document.querySelector("#new");
 var closeModal = document.querySelector("#closeModal");
 
 openModal.onclick = function () {
@@ -67,6 +67,7 @@ openModal.onclick = function () {
 closeModal.onclick = function () {
     const modal = document.getElementById("modal");
     modal.style.display = "none";
+    clearSonho();
 }
 
 // console.log(openModal);
@@ -75,9 +76,154 @@ closeModal.onclick = function () {
 //     modal.classList.add("active");
 // }
 
-window.onclink = function(event) {
-    console.log(target.id);
+// QUESTÕES DE ESTILO ---------------------------------------------------
+
+
+// LOCAL STORAGE ------------------------------------
+
+const getLocalStorage = () => JSON.parse(localStorage.getItem("db_diario")) ?? [];
+
+const setLocalStorage = (db_diario) =>
+    localStorage.setItem("db_diario", JSON.stringify(db_diario));
+
+const clearSonho = () => {
+    const sonho = document.querySelector(".textbox");
+    sonho.value = "";
 }
 
+// const clear_li = () => {
+//     const itens = document.querySelectorAll("#sonholista");
+//     itens.forEach((row) => row.parentNode.removeChild(row));
+//   };
+
+const update_li = () => {
+    // ordenar();
+    const db_diario = readSonhos();
+    // clear_li();
+    db_diario.forEach(createrow);
+    vazio();
+};
 
 
+let modo = "create"
+
+// ======================================================
+
+const createrow = (diario, index) => {
+    const newrow = document.createElement("li");
+    newrow.className = "itemLista";
+    newrow.innerHTML = `
+    <div class="data" id = '${index}'>
+        <p>'${diario.data}'</p>
+    </div>
+    <div class="sonhoLista">
+        <div class="preview">
+            <header>
+                <h1>${diario.titulo}</h1>
+                <br>
+            </header>
+            <p>${diario.sonho}
+            </p>
+        </div>
+        <div class="detail">
+            <div class="duracao">
+                <img id="sleep"
+                src="assets/images/Sleep.svg" alt>
+                <p>${diario.duracao}</p>
+            </div>
+            <div id="time">
+                <p>${diario.hora}</p>
+            </div>
+            </div>
+        </div>
+      `;
+
+    document.getElementById("lista").appendChild(newrow);
+};
+
+const vazio = () => {
+    const sonhos = getLocalStorage().length;
+
+    if (sonhos < 1) {
+        const newrow = document.createElement("li");
+        newrow.className = "sonhoLista";
+        newrow.innerHTML = `
+        <div class="preview">
+            <header>
+                <h1>Nenhum sonho adicionado ainda :( </h1>
+                <br>
+            </header>
+        </div>
+          `;
+
+        document.getElementById("lista").appendChild(newrow);
+    };
+
+}
+
+//create
+const createSonho = (sonho) => {
+    const db_diario = getLocalStorage();
+    db_diario.push(sonho);
+
+    setLocalStorage(db_diario);
+};
+
+//read
+const readSonhos = () => getLocalStorage();
+
+//update
+const updateSonho = (index, sonho) => {
+    const db_diario = readSonhos();
+    db_sonho[index] = sonho;
+    setLocalStorage(db_diario);
+};
+
+// //delete
+// const deleteSonho = () => {
+//     const index = document.getElementById("delete-btn").className;
+//     const db_receita = readreceita();
+//     db_receita.splice(index, 1);
+//     setLocalStorage(db_receita);
+//     update_li();
+//     closeView();
+//   };
+
+const saveSonho = () => {
+    const sonho = {
+        titulo: document.getElementById("sonhoTitulo").value,
+        sonho: document.getElementById("modalSonho").value
+    };
+
+
+    // const index = document.getElementById('titulo').dataset.index
+    // console.log(index)
+
+    if (modo === "create") {
+        createSonho(sonho);
+        console.log("Cadastrando");
+        // clearFields();
+        update_li();
+    
+    }
+    // if (modo === "edit") {
+    //     updatereceita(index, receita)
+    //     // clearFields();
+    //     update_li();
+    //     closeModal();
+    // }
+
+    // window.alert('Salvo')
+    // mostrarMensagem()
+    modo = 'create'
+}
+
+// function mostrarMensagem() {
+//     var mensagem = document.getElementById("mensagem");
+//     mensagem.style.display = "block"; // Torna a mensagem visível
+//     setTimeout(function() {
+//         mensagem.style.display = "none";
+//     }, 1000); 
+//   }
+
+document.getElementById("send").addEventListener("click", saveSonho);
