@@ -385,6 +385,7 @@ body {
         max-width: 75%;
       }
 
+      
       & .preview h1 {
         font-size: 20px;
         font-family: "titulo";
@@ -422,6 +423,11 @@ body {
       }
     }
   }
+}
+
+.vazio{
+  margin: 2rem;
+  font-size: 16px;
 }
 
 img#sleep {
