@@ -143,12 +143,13 @@ const createrow = (diario, index) => {
 
 const vazio = () => {
     const sonhos = getLocalStorage().length;
+    console.log(sonhos);
 
     if (sonhos < 1) {
         const newrow = document.createElement("li");
         newrow.className = "sonhoLista";
         newrow.innerHTML = `
-        <div class="preview">
+        <div class="vazio">
             <header>
                 <h1>Nenhum sonho adicionado ainda :( </h1>
                 <br>
@@ -195,16 +196,27 @@ const saveSonho = () => {
         sonho: document.getElementById("modalSonho").value
     };
 
-
     // const index = document.getElementById('titulo').dataset.index
     // console.log(index)
 
     if (modo === "create") {
         createSonho(sonho);
+        update_li();
         console.log("Cadastrando");
         // clearFields();
-        update_li();
-    
+        const d = new Date();
+        console.log(d)
+        const hora = document.querySelector("#time p")
+        hora.innerHTML = d.getHours() + ":" + d.getMinutes();
+
+        const t = new Date(year, month, day);
+
+
+        const data = document.querySelector(".data p");
+        data.innerHTML = t;
+
+
+
     }
     // if (modo === "edit") {
     //     updatereceita(index, receita)
@@ -215,6 +227,9 @@ const saveSonho = () => {
 
     // window.alert('Salvo')
     // mostrarMensagem()
+    const modal = document.getElementById("modal");
+    modal.style.display = "none";
+    clearSonho();
     modo = 'create'
 }
 
@@ -227,3 +242,7 @@ const saveSonho = () => {
 //   }
 
 document.getElementById("send").addEventListener("click", saveSonho);
+
+update_li();
+// listaMax();
+
