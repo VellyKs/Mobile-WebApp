@@ -197,7 +197,7 @@ const saveSonho = () => {
     titulo: document.getElementById("sonhoTitulo").value,
     sonho: document.getElementById("modalSonho").value,
     hora: d.getHours() + ":" + d.getMinutes(),
-    data: d.getDate() + "/" + Number(d.getMonth()+1) + "/" + d.getFullYear()
+    data: d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear()
   };
 
   // const index = document.getElementById('titulo').dataset.index
