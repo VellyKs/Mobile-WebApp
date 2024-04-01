@@ -3,56 +3,56 @@
 
 var toggle = document.getElementById("darkLight");
 
-var storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+var storedTheme =
+  localStorage.getItem("theme") ||
+  (window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light");
 
 if (storedTheme)
-    document.documentElement.setAttribute('data-theme', storedTheme)
+  document.documentElement.setAttribute("data-theme", storedTheme);
 change(storedTheme);
 var currentTheme = document.documentElement.getAttribute("data-theme");
 if (currentTheme === "dark") {
-    toggle.checked = "true";
+  toggle.checked = "true";
 }
 
-
-
 toggle.onclick = function () {
-    var currentTheme = document.documentElement.getAttribute("data-theme");
-    // moon.checked = true;
-    // sun.checked = false;
-    var targetTheme = "dark";
+  var currentTheme = document.documentElement.getAttribute("data-theme");
+  // moon.checked = true;
+  // sun.checked = false;
+  var targetTheme = "dark";
 
-    if (currentTheme === "dark") {
-        targetTheme = "light";
-    }
+  if (currentTheme === "dark") {
+    targetTheme = "light";
+  }
 
-    document.documentElement.setAttribute('data-theme', targetTheme)
-    change(targetTheme);
+  document.documentElement.setAttribute("data-theme", targetTheme);
+  change(targetTheme);
 
-    localStorage.setItem('theme', targetTheme);
+  localStorage.setItem("theme", targetTheme);
 };
 
 function change(theme) {
-
-    if (theme === "dark") {
-        document.querySelector("#darklogo").setAttribute("style", "display: block")
-        // document.querySelector(".conteiner .moon").setAttribute("style", "display: none")
-        document.querySelector("#lightlogo").setAttribute("style", "display: none")
-    }
-    if (theme === "light") {
-        document.querySelector("#darklogo").setAttribute("style", "display: none")
-        document.querySelector("#lightlogo").setAttribute("style", "display: block")
-    }
+  if (theme === "dark") {
+    document.querySelector("#darklogo").setAttribute("style", "display: block");
+    // document.querySelector(".conteiner .moon").setAttribute("style", "display: none")
+    document.querySelector("#lightlogo").setAttribute("style", "display: none");
+  }
+  if (theme === "light") {
+    document.querySelector("#darklogo").setAttribute("style", "display: none");
+    document
+      .querySelector("#lightlogo")
+      .setAttribute("style", "display: block");
+  }
 }
 
 // Dark mode -------------------------------------------------------------------------
 
-var openModal = document.querySelector("#new");
-var closeModal = document.querySelector("#closeModal");
-
-openModal.onclick = function () {
-    const modal = document.getElementById("modal");
-    modal.style.display = "flex";
-}
+const openModal = () => {
+  const modal = document.getElementById("modal");
+  modal.style.display = "flex";
+};
 
 // window.onclick = function(event) {
 //     if (event.target === openModal || event.target === openModal.children ) {
@@ -62,13 +62,11 @@ openModal.onclick = function () {
 //     }
 //   }
 
-
-
-closeModal.onclick = function () {
-    const modal = document.getElementById("modal");
-    modal.style.display = "none";
-    clearSonho();
-}
+const closeModal = () => {
+  const modal = document.getElementById("modal");
+  modal.style.display = "none";
+  clearSonho();
+};
 
 // console.log(openModal);
 // openModal.onclick = function (){
@@ -78,41 +76,43 @@ closeModal.onclick = function () {
 
 // QUESTÕES DE ESTILO ---------------------------------------------------
 
-
 // LOCAL STORAGE ------------------------------------
 
-const getLocalStorage = () => JSON.parse(localStorage.getItem("db_diario")) ?? [];
+const getLocalStorage = () =>
+  JSON.parse(localStorage.getItem("db_diario")) ?? [];
 
 const setLocalStorage = (db_diario) =>
-    localStorage.setItem("db_diario", JSON.stringify(db_diario));
+  localStorage.setItem("db_diario", JSON.stringify(db_diario));
 
 const clearSonho = () => {
-    const sonho = document.querySelector(".textbox");
-    sonho.value = "";
-}
+  const sonho = document.querySelector("#modalSonho");
+  const sonhoTitulo = document.querySelector("#sonhoTitulo");
 
-// const clear_li = () => {
-//     const itens = document.querySelectorAll("#sonholista");
-//     itens.forEach((row) => row.parentNode.removeChild(row));
-//   };
-
-const update_li = () => {
-    // ordenar();
-    const db_diario = readSonhos();
-    // clear_li();
-    db_diario.forEach(createrow);
-    vazio();
+  sonho.value = "";
+  sonhoTitulo.value = "";
 };
 
+const clear_li = () => {
+  const itens = document.querySelectorAll(".itemLista");
+  itens.forEach((row) => row.parentNode.removeChild(row));
+};
 
-let modo = "create"
+const update_li = () => {
+    vazio();
+    // ordenar();
+    const db_diario = readSonhos();
+    clear_li();
+  db_diario.forEach(createrow);
+};
+
+let modo = "create";
 
 // ======================================================
 
 const createrow = (diario, index) => {
-    const newrow = document.createElement("li");
-    newrow.className = "itemLista";
-    newrow.innerHTML = `
+  const newrow = document.createElement("li");
+  newrow.className = "itemLista";
+  newrow.innerHTML = `
     <div class="data" id = '${index}'>
         <p>'${diario.data}'</p>
     </div>
@@ -138,17 +138,17 @@ const createrow = (diario, index) => {
         </div>
       `;
 
-    document.getElementById("lista").appendChild(newrow);
+  document.getElementById("lista").appendChild(newrow);
 };
 
 const vazio = () => {
-    const sonhos = getLocalStorage().length;
-    console.log(sonhos);
+  const sonhos = getLocalStorage().length;
+  console.log(sonhos);
 
-    if (sonhos < 1) {
-        const newrow = document.createElement("li");
-        newrow.className = "sonhoLista";
-        newrow.innerHTML = `
+  if (sonhos < 1) {
+    const newrow = document.createElement("li");
+    newrow.className = "sonhoLista";
+    newrow.innerHTML = `
         <div class="vazio">
             <header>
                 <h1>Nenhum sonho adicionado ainda :( </h1>
@@ -157,17 +157,18 @@ const vazio = () => {
         </div>
           `;
 
-        document.getElementById("lista").appendChild(newrow);
-    };
+    document.getElementById("lista").appendChild(newrow);
+  }
+  
 
-}
+};
 
 //create
 const createSonho = (sonho) => {
-    const db_diario = getLocalStorage();
-    db_diario.push(sonho);
+  const db_diario = getLocalStorage();
+  db_diario.push(sonho);
 
-    setLocalStorage(db_diario);
+  setLocalStorage(db_diario);
 };
 
 //read
@@ -175,9 +176,9 @@ const readSonhos = () => getLocalStorage();
 
 //update
 const updateSonho = (index, sonho) => {
-    const db_diario = readSonhos();
-    db_sonho[index] = sonho;
-    setLocalStorage(db_diario);
+  const db_diario = readSonhos();
+  db_sonho[index] = sonho;
+  setLocalStorage(db_diario);
 };
 
 // //delete
@@ -191,58 +192,48 @@ const updateSonho = (index, sonho) => {
 //   };
 
 const saveSonho = () => {
-    const sonho = {
-        titulo: document.getElementById("sonhoTitulo").value,
-        sonho: document.getElementById("modalSonho").value
-    };
+  const d = new Date();
+  const sonho = {
+    titulo: document.getElementById("sonhoTitulo").value,
+    sonho: document.getElementById("modalSonho").value,
+    hora: d.getHours() + ":" + d.getMinutes(),
+    data: d.getDate() + "/" + Number(d.getMonth()+1) + "/" + d.getFullYear()
+  };
 
-    // const index = document.getElementById('titulo').dataset.index
-    // console.log(index)
+  // const index = document.getElementById('titulo').dataset.index
+  // console.log(index)
 
-    if (modo === "create") {
-        createSonho(sonho);
-        update_li();
-        console.log("Cadastrando");
-        // clearFields();
-        const d = new Date();
-        console.log(d)
-        const hora = document.querySelector("#time p")
-        hora.innerHTML = d.getHours() + ":" + d.getMinutes();
+  if (modo === "create") {
+    createSonho(sonho);
+    update_li();
+    console.log("Cadastrando");
+    // clearFields();
+    console.log(d);
+    
+  }
+  // if (modo === "edit") {
+  //     updatereceita(index, receita)
+  //     // clearFields();
+  //     update_li();
+  //     closeModal();
+  // }
 
-        const t = new Date(year, month, day);
-
-
-        const data = document.querySelector(".data p");
-        data.innerHTML = t;
-
-
-
-    }
-    // if (modo === "edit") {
-    //     updatereceita(index, receita)
-    //     // clearFields();
-    //     update_li();
-    //     closeModal();
-    // }
-
-    // window.alert('Salvo')
-    // mostrarMensagem()
-    const modal = document.getElementById("modal");
-    modal.style.display = "none";
-    clearSonho();
-    modo = 'create'
-}
+  // window.alert('Salvo')
+  // mostrarMensagem()
+  closeModal();
+  modo = "create";
+};
 
 // function mostrarMensagem() {
 //     var mensagem = document.getElementById("mensagem");
 //     mensagem.style.display = "block"; // Torna a mensagem visível
 //     setTimeout(function() {
 //         mensagem.style.display = "none";
-//     }, 1000); 
+//     }, 1000);
 //   }
 
 document.getElementById("send").addEventListener("click", saveSonho);
-
+document.getElementById("new").addEventListener("click", openModal);
+document.getElementById("closeModal").addEventListener("click", closeModal);
 update_li();
 // listaMax();
-
