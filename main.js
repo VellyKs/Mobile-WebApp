@@ -114,7 +114,7 @@ const createrow = (diario, index) => {
   newrow.className = "itemLista";
   newrow.innerHTML = `
     <div class="data" id = '${index}'>
-        <p>'${diario.data}'</p>
+        <p>${diario.data}</p>
     </div>
     <div class="sonhoLista">
         <div class="preview">
@@ -197,7 +197,7 @@ const saveSonho = () => {
     titulo: document.getElementById("sonhoTitulo").value,
     sonho: document.getElementById("modalSonho").value,
     hora: d.getHours() + ":" + d.getMinutes(),
-    data: d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear()
+    data: d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear()
   };
 
   // const index = document.getElementById('titulo').dataset.index
