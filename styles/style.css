@@ -425,9 +425,11 @@ body {
   }
 }
 
-.vazio{
+#vazio{
+  display: none;
   margin: 2rem;
-  font-size: 16px;
+  font-size: 18px;
+  color: var(--font-data);
 }
 
 img#sleep {

@@ -50,8 +50,10 @@ function change(theme) {
 // Dark mode -------------------------------------------------------------------------
 
 const openModal = () => {
+  var d = new Date()
   const modal = document.getElementById("modal");
   modal.style.display = "flex";
+  document.getElementById("dataHoje").innerHTML = ("0" + d.getDate()).slice(-2) + "/" + ("0" + (d.getMonth() + 1)).slice(-2) + "/" + d.getFullYear()
 };
 
 // window.onclick = function(event) {
@@ -98,11 +100,12 @@ const clear_li = () => {
 };
 
 const update_li = () => {
-    vazio();
-    // ordenar();
-    const db_diario = readSonhos();
-    clear_li();
+  //vazio();
+  // ordenar();
+  const db_diario = readSonhos();
+  clear_li();
   db_diario.forEach(createrow);
+
 };
 
 let modo = "create";
@@ -146,20 +149,13 @@ const vazio = () => {
   console.log(sonhos);
 
   if (sonhos < 1) {
-    const newrow = document.createElement("li");
-    newrow.className = "sonhoLista";
-    newrow.innerHTML = `
-        <div class="vazio">
-            <header>
-                <h1>Nenhum sonho adicionado ainda :( </h1>
-                <br>
-            </header>
-        </div>
-          `;
-
-    document.getElementById("lista").appendChild(newrow);
+    document.getElementById("vazio").style.display = "flex"
   }
-  
+  else {
+    document.getElementById("vazio").style.display = "none"
+
+  }
+
 
 };
 
@@ -196,8 +192,8 @@ const saveSonho = () => {
   const sonho = {
     titulo: document.getElementById("sonhoTitulo").value,
     sonho: document.getElementById("modalSonho").value,
-    hora: d.getHours() + ":" + d.getMinutes(),
-    data: d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear()
+    hora: ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2),
+    data: ("0" + d.getDate()).slice(-2) + "/" + ("0" + (d.getMonth() + 1)).slice(-2) + "/" + ("0" + d.getFullYear()).slice(-2),
   };
 
   // const index = document.getElementById('titulo').dataset.index
@@ -209,7 +205,7 @@ const saveSonho = () => {
     console.log("Cadastrando");
     // clearFields();
     console.log(d);
-    
+
   }
   // if (modo === "edit") {
   //     updatereceita(index, receita)

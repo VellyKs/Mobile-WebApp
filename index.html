@@ -7,7 +7,7 @@
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4f3fb">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#7766C6">
     <title>Crystal-Moon</title>
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="styles/style.css" type="text/css">
 </head>
 
@@ -54,11 +54,17 @@
     </div>
 
     <div id="div-lista">
+        <span id="vazio">
+            <header>
+                <h1>Nenhum sonho adicionado ainda :( </h1>
+                <br>
+            </header>
+        </span>
         <ul id="lista">
         </ul>
     </div>
     <div id="nav">
-        navvvvv
+        
     </div>
 
     <div id="modal">
@@ -79,7 +85,7 @@
             <textarea name="sonho" id="modalSonho" cols="25" rows="10" placeholder="Descreva aqui seu sonho"></textarea>
         </div>
         <div class="bottomModal">
-            <p>31/02/2024</p>
+            <p id="dataHoje">31/02/2024</p>
             <div id="send">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#46467a" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="#46467a" class="w-6 h-6">
