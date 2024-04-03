@@ -99,6 +99,10 @@
 
     </div>
 </body>
-<script src="main.js"></script>
+<script src="main.js">
+  if (typeof navigator.serviceWorker !== 'undefined') {
+    navigator.serviceWorker.register('sw.js')
+  }
+</script>
 
 </html>
