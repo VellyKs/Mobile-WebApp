@@ -100,7 +100,7 @@ const clear_li = () => {
 };
 
 const update_li = () => {
-  //vazio();
+  vazio();
   // ordenar();
   const db_diario = readSonhos();
   clear_li();
