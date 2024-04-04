@@ -430,6 +430,7 @@ body {
   margin: 2rem;
   font-size: 18px;
   color: var(--font-data);
+  justify-content: center;
 }
 
 img#sleep {
