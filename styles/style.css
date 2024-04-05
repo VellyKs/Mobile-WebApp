@@ -247,15 +247,21 @@ h1 {
 }
 
 
-@media (min-width: 600px){
+@media (min-width: 598px){
   #input-div{
     max-width: 600px;
   }
-
+  
   .itemLista{
     padding: 10%;
+    width: 40%;
   }
+  
+  #modal{
+    max-width: 600px;
 
+  }
+ 
 
 }
 
@@ -267,7 +273,7 @@ body {
   background-blend-mode: lighten;
   height: 100%;
   padding: 5%;
-  padding-block: 10%;
+  padding-block: 6%;
   transition: background 300ms;
   overflow: hidden;
 }
@@ -350,6 +356,7 @@ body {
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  
 
   & .itemLista {
     display: flex;
