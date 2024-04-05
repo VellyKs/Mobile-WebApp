@@ -157,6 +157,7 @@ h1 {
   --font-li: #f4ebdc;
   --font-data: #f4ebdc;
   --background-li: #7866c696;
+  --theme: var(--background-color-dark);
 
   & #write {
     background-color: var(--background-color-light-3);
@@ -194,6 +195,7 @@ h1 {
   background-color: var(--background-color-light);
   --font-li: #f5f4fb;
   --background-li: var(--font-data);
+  --theme: var(--background-color-light);
 
   & #write {
     background-color: var(--background-color-light-3);
