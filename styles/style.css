@@ -351,7 +351,7 @@ body {
   list-style-type: none;
   border-radius: 2rem;
   color: var(--font-li);
-  height: 48vh;
+  height: 54vh;
   overflow: scroll;
   scroll-behavior: smooth;
   -ms-overflow-style: none;
