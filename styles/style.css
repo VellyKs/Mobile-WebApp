@@ -286,6 +286,15 @@ body {
   /* filter: blur(0.5rem); */
 }
 
+.signo{
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  position: relative;
+
+}
+
+
 #input-div {
   display: flex;
   flex-direction: row;

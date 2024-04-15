@@ -231,5 +231,54 @@ const saveSonho = () => {
 document.getElementById("send").addEventListener("click", saveSonho);
 document.getElementById("new").addEventListener("click", openModal);
 document.getElementById("closeModal").addEventListener("click", closeModal);
+
+
 update_li();
 // listaMax();
+
+
+// ================ Signo api ==================
+
+const getLocalApi = () =>
+  JSON.parse(localStorage.getItem("signo")) ?? [];
+
+const setLocalApi = (signo) =>
+  localStorage.setItem("signo", JSON.stringify(signo));
+
+const saveSigno = () => {
+  const signo = document.getElementById("signoApi").value
+
+  setLocalApi(signo)
+  fillApi(signo)
+}
+
+
+
+const fillApi = () => {
+  const storageSigno = JSON.parse(localStorage.getItem("signo"))
+  console.log(storageSigno)
+  const signo = document.getElementById("signoApi").value = storageSigno
+}
+
+document.getElementById("sendSigno").addEventListener('click', async (event) => {
+  event.preventDefault();
+
+  const signo = document.getElementById('signoApi').value;
+
+  try {
+    const response = await axios.get(`http://localhost/signo/${signo}/dia`);
+    const horoscopo = response.data;
+    const div = document.querySelector("horoscopo")
+    div.innerHTML = `
+          <h2>Horóscopo para ${signo}</h2>
+          <p>${horoscopo.texto}</p>
+          <p>Autor: ${horoscopo.autor}</p>
+          <p><a href="${horoscopo.urlOrigem}" target="_blank">Fonte</a></p>
+      `;
+  } catch (error) {
+    console.error('Erro ao buscar o horóscopo:', error);
+    div.innerHTML = `<p>Erro ao buscar o horóscopo. Verifique o signo digitado.</p>`;
+  }
+});
+
+fillApi();
