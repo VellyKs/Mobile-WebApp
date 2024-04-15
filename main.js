@@ -1,6 +1,7 @@
 // QUESTÕES DE ESTILO ---------------------------------------------------
 // Dark mode ----------------------------------------------------------------
 
+
 var toggle = document.getElementById("darkLight");
 
 var storedTheme =
@@ -262,23 +263,26 @@ const fillApi = () => {
 
 document.getElementById("sendSigno").addEventListener('click', async (event) => {
   event.preventDefault();
+  const div = document.querySelector("#horoscopo");
 
   const signo = document.getElementById('signoApi').value;
 
   try {
-    const response = await axios.get(`http://localhost/signo/${signo}/dia`);
-    const horoscopo = response.data;
-    const div = document.querySelector("horoscopo")
+    const response = await fetch(`http://localhost/signo/${signo}/dia`);
+    const horoscopo = await response.json();
+
+    console.log(horoscopo)
     div.innerHTML = `
-          <h2>Horóscopo para ${signo}</h2>
-          <p>${horoscopo.texto}</p>
-          <p>Autor: ${horoscopo.autor}</p>
-          <p><a href="${horoscopo.urlOrigem}" target="_blank">Fonte</a></p>
-      `;
+      <h2>Horóscopo para ${horoscopo.signo}</h2>
+      <p>${horoscopo.texto}</p>
+      <p>Autor: ${horoscopo.autor}</p>
+      <p><a href="${horoscopo.urlOrigem}" target="_blank">Fonte</a></p>
+    `;
   } catch (error) {
     console.error('Erro ao buscar o horóscopo:', error);
     div.innerHTML = `<p>Erro ao buscar o horóscopo. Verifique o signo digitado.</p>`;
   }
 });
+
 
 fillApi();

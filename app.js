@@ -1,9 +1,14 @@
 // Importando as bibliotecas necessárias
 const express = require('express');
+const cors = require('cors');
+
 
 // Criando uma instância do aplicativo Express
 const app = express();
 const PORT = 80; // Porta na qual o servidor será executado
+
+app.use(cors());
+
 
 // Definindo as rotas para horóscopo diário pelo signo
 app.get('/signo/:signo/dia', (req, res) => {
@@ -37,3 +42,5 @@ app.get('/signo/:signo/semana', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });
+
+
