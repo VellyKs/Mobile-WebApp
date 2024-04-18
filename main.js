@@ -106,6 +106,7 @@ const update_li = () => {
   const db_diario = readSonhos();
   clear_li();
   db_diario.forEach(createrow);
+  
 
 };
 
@@ -253,12 +254,29 @@ const saveSigno = () => {
   fillApi(signo)
 }
 
-
+const inputSigno = () => {
+  console.log("iii", getLocalApi())
+  const input = document.querySelector(".signoInput");
+  const text = document.getElementById("signoDiv");
+  if (getLocalApi().length > 0){
+    input.style.display = "none";
+    text.style.display = "flex";
+  }else{
+    input.style.display = "flex";
+    text.style.display = "none";
+  }
+}
 
 const fillApi = () => {
   const storageSigno = JSON.parse(localStorage.getItem("signo"))
   console.log(storageSigno)
-  const signo = document.getElementById("signoApi").value = storageSigno
+
+  document.getElementById("signoDiv").innerHTML = `<h3>${storageSigno}</h3>`
+  
+  // const text = document.getElementById("signoDiv")
+  // text.style.display = "flex"
+  // text.innerHTML(`<h3>${storageSigno}</h3>`)
+  // const signo = document.getElementById("signoApi")
 }
 
 document.getElementById("sendSigno").addEventListener('click', async (event) => {
@@ -266,12 +284,14 @@ document.getElementById("sendSigno").addEventListener('click', async (event) => 
   const div = document.querySelector("#horoscopo");
 
   const signo = document.getElementById('signoApi').value;
+  saveSigno(signo)
 
   try {
     const response = await fetch(`http://localhost/signo/${signo}/dia`);
     const horoscopo = await response.json();
 
     console.log(horoscopo)
+
     div.innerHTML = `
       <h2>Horóscopo para ${horoscopo.signo}</h2>
       <p>${horoscopo.texto}</p>
@@ -286,3 +306,4 @@ document.getElementById("sendSigno").addEventListener('click', async (event) => 
 
 
 fillApi();
+inputSigno();

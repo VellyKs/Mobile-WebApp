@@ -286,14 +286,31 @@ body {
   /* filter: blur(0.5rem); */
 }
 
-.signo{
+.signoInput{
   display: flex;
-  justify-content: end;
-  align-items: end;
+  justify-content: center;
+  align-items: center;
   position: relative;
+  height: 2rem;
 
+  & input#signoApi{
+    width: 8rem;
+    padding-inline: 0px;
+  }
+
+  & #send{
+    display: flex;
+    justify-self: end;
+  }
 }
 
+
+#signoDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
 
 #input-div {
   display: flex;
