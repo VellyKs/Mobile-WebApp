@@ -11,7 +11,7 @@ dotenv.config();
 
 // Criando uma instância do aplicativo Express
 const app = express();
-const PORT = 3000; // Porta na qual o servidor será executado
+const PORT = process.env.PORT || 3000; // Porta na qual o servidor será executado
 
 app.use(express.json());
 app.use(express.static("express"));
