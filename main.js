@@ -1,7 +1,6 @@
 // QUESTÕES DE ESTILO ---------------------------------------------------
 // Dark mode ----------------------------------------------------------------
 
-
 var toggle = document.getElementById("darkLight");
 
 var storedTheme =
@@ -51,10 +50,15 @@ function change(theme) {
 // Dark mode -------------------------------------------------------------------------
 
 const openModal = () => {
-  var d = new Date()
+  var d = new Date();
   const modal = document.getElementById("modal");
   modal.style.display = "flex";
-  document.getElementById("dataHoje").innerHTML = ("0" + d.getDate()).slice(-2) + "/" + ("0" + (d.getMonth() + 1)).slice(-2) + "/" + d.getFullYear()
+  document.getElementById("dataHoje").innerHTML =
+    ("0" + d.getDate()).slice(-2) +
+    "/" +
+    ("0" + (d.getMonth() + 1)).slice(-2) +
+    "/" +
+    d.getFullYear();
 };
 
 // window.onclick = function(event) {
@@ -66,6 +70,7 @@ const openModal = () => {
 //   }
 
 const closeModal = () => {
+  console.log("cliccckkk");
   const modal = document.getElementById("modal");
   modal.style.display = "none";
   clearSonho();
@@ -80,12 +85,23 @@ const closeModal = () => {
 // QUESTÕES DE ESTILO ---------------------------------------------------
 
 // LOCAL STORAGE ------------------------------------
-
+/* 
 const getLocalStorage = () =>
   JSON.parse(localStorage.getItem("db_diario")) ?? [];
 
 const setLocalStorage = (db_diario) =>
-  localStorage.setItem("db_diario", JSON.stringify(db_diario));
+  localStorage.setItem("db_diario", JSON.stringify(db_diario)); */
+const vazio = async (sonhos) => {
+  try {
+    const sonho = await sonhos;
+    console.log(sonhos);
+    if (sonho.length < 1) {
+      document.getElementById("vazio").style.display = "flex";
+    } else {
+      document.getElementById("vazio").style.display = "none";
+    }
+  } catch {}
+};
 
 const clearSonho = () => {
   const sonho = document.querySelector("#modalSonho");
@@ -100,14 +116,35 @@ const clear_li = () => {
   itens.forEach((row) => row.parentNode.removeChild(row));
 };
 
-const update_li = () => {
-  vazio();
-  // ordenar();
-  const db_diario = readSonhos();
-  clear_li();
-  db_diario.forEach(createrow);
-  
+// GET
 
+const readSonhos = async () => {
+  try {
+    const response = await fetch("/diario"); // Fazendo a solicitação GET para a rota /diario
+    if (!response.ok) {
+      throw new Error("Erro ao recuperar sonhos");
+    }
+    const data = await response.json(); // Convertendo a resposta para JSON
+    console.log("Sonhos recuperados:", data);
+
+    update_li(data);
+
+    // Aqui você pode fazer o que quiser com os dados, como atualizar a interface do usuário
+  } catch (error) {
+    console.error("Erro ao recuperar sonhos:", error.message);
+    // Lidar com o erro, se necessário
+  }
+};
+
+const update_li = async (sonho) => {
+  try {
+    const sonhos = await sonho;
+    vazio(sonho);
+    /*   // ordenar();
+    const db_diario = readSonhos(); */
+    clear_li();
+    sonho.forEach(createrow);
+  } catch {}
 };
 
 let modo = "create";
@@ -134,7 +171,7 @@ const createrow = (diario, index) => {
             <div class="duracao">
                 <img id="sleep"
                 src="assets/images/Sleep.svg" alt>
-                <p>${diario.duracao}</p>
+                <p></p>
             </div>
             <div id="time">
                 <p>${diario.hora}</p>
@@ -146,38 +183,52 @@ const createrow = (diario, index) => {
   document.getElementById("lista").appendChild(newrow);
 };
 
-const vazio = () => {
-  const sonhos = getLocalStorage().length;
-  console.log(sonhos);
+//create
 
-  if (sonhos < 1) {
-    document.getElementById("vazio").style.display = "flex"
+const createSonho = async (sonho) => {
+  try {
+    const response = await fetch("/diario", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(sonho),
+    });
+
+    if (!response.ok) {
+      throw new Error("Erro ao adicionar sonho");
+    }
+
+    const data = await response.json();
+    console.log("Sonho adicionado:", data);
+
+    // Após adicionar com sucesso, atualize a lista de sonhos
+    readSonhos();
+    vazio(data);
+    // Atualize a interface do usuário conforme necessário
+  } catch (error) {
+    console.error("Erro ao adicionar sonho:", error.message);
+    // Lide com o erro na interface do usuário, se necessário
   }
-  else {
-    document.getElementById("vazio").style.display = "none"
-
-  }
-
-
 };
 
-//create
-const createSonho = (sonho) => {
+/* const createSonho = (sonho) => {
   const db_diario = getLocalStorage();
   db_diario.push(sonho);
 
   setLocalStorage(db_diario);
-};
+}; */
 
-//read
-const readSonhos = () => getLocalStorage();
+/* const readSonhos = () => getLocalStorage(); */
 
 //update
-const updateSonho = (index, sonho) => {
+
+/* const updateSonho = (index, sonho) => {
   const db_diario = readSonhos();
   db_sonho[index] = sonho;
   setLocalStorage(db_diario);
 };
+ */
 
 // //delete
 // const deleteSonho = () => {
@@ -194,20 +245,24 @@ const saveSonho = () => {
   const sonho = {
     titulo: document.getElementById("sonhoTitulo").value,
     sonho: document.getElementById("modalSonho").value,
-    hora: ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2),
-    data: ("0" + d.getDate()).slice(-2) + "/" + ("0" + (d.getMonth() + 1)).slice(-2) + "/" + ("0" + d.getFullYear()).slice(-2),
+    hora:
+      ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2),
+    data:
+      ("0" + d.getDate()).slice(-2) +
+      "/" +
+      ("0" + (d.getMonth() + 1)).slice(-2) +
+      "/" +
+      ("0" + d.getFullYear()).slice(-2),
   };
 
   // const index = document.getElementById('titulo').dataset.index
   // console.log(index)
 
   if (modo === "create") {
+    console.log(sonho);
     createSonho(sonho);
-    update_li();
+    update_li(sonho);
     console.log("Cadastrando");
-    // clearFields();
-    console.log(d);
-
   }
   // if (modo === "edit") {
   //     updatereceita(index, receita)
@@ -216,94 +271,14 @@ const saveSonho = () => {
   //     closeModal();
   // }
 
-  // window.alert('Salvo')
-  // mostrarMensagem()
   closeModal();
+  // mostrarMensagem()
+
   modo = "create";
 };
-
-// function mostrarMensagem() {
-//     var mensagem = document.getElementById("mensagem");
-//     mensagem.style.display = "block"; // Torna a mensagem visível
-//     setTimeout(function() {
-//         mensagem.style.display = "none";
-//     }, 1000);
-//   }
 
 document.getElementById("send").addEventListener("click", saveSonho);
 document.getElementById("new").addEventListener("click", openModal);
 document.getElementById("closeModal").addEventListener("click", closeModal);
-
-
-update_li();
-// listaMax();
-
-
-// ================ Signo api ==================
-
-const getLocalApi = () =>
-  JSON.parse(localStorage.getItem("signo")) ?? [];
-
-const setLocalApi = (signo) =>
-  localStorage.setItem("signo", JSON.stringify(signo));
-
-const saveSigno = () => {
-  const signo = document.getElementById("signoApi").value
-
-  setLocalApi(signo)
-  fillApi(signo)
-}
-
-const inputSigno = () => {
-  console.log("iii", getLocalApi())
-  const input = document.querySelector(".signoInput");
-  const text = document.getElementById("signoDiv");
-  if (getLocalApi().length > 0){
-    input.style.display = "none";
-    text.style.display = "flex";
-  }else{
-    input.style.display = "flex";
-    text.style.display = "none";
-  }
-}
-
-const fillApi = () => {
-  const storageSigno = JSON.parse(localStorage.getItem("signo"))
-  console.log(storageSigno)
-
-  document.getElementById("signoDiv").innerHTML = `<h3>${storageSigno}</h3>`
-  
-  // const text = document.getElementById("signoDiv")
-  // text.style.display = "flex"
-  // text.innerHTML(`<h3>${storageSigno}</h3>`)
-  // const signo = document.getElementById("signoApi")
-}
-
-document.getElementById("sendSigno").addEventListener('click', async (event) => {
-  event.preventDefault();
-  const div = document.querySelector("#horoscopo");
-
-  const signo = document.getElementById('signoApi').value;
-  saveSigno(signo)
-
-  try {
-    const response = await fetch(`http://localhost/signo/${signo}/dia`);
-    const horoscopo = await response.json();
-
-    console.log(horoscopo)
-
-    div.innerHTML = `
-      <h2>Horóscopo para ${horoscopo.signo}</h2>
-      <p>${horoscopo.texto}</p>
-      <p>Autor: ${horoscopo.autor}</p>
-      <p><a href="${horoscopo.urlOrigem}" target="_blank">Fonte</a></p>
-    `;
-  } catch (error) {
-    console.error('Erro ao buscar o horóscopo:', error);
-    div.innerHTML = `<p>Erro ao buscar o horóscopo. Verifique o signo digitado.</p>`;
-  }
-});
-
-
-fillApi();
-inputSigno();
+document.addEventListener("DOMContentLoaded", readSonhos);
+document.addEventListener("DOMContentLoaded", vazio);
