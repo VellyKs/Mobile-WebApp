@@ -3,6 +3,11 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const { createClient } = require("@supabase/supabase-js");
+const dotenv = require("dotenv");
+
+
+dotenv.config();
+
 
 // Criando uma instância do aplicativo Express
 const app = express();
@@ -13,9 +18,9 @@ app.use(express.static("express"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(__dirname));
 
-const supabaseUrl = "https://zuofwbyznndbuxkwrhua.supabase.co";
-const supabaseKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp1b2Z3Ynl6bm5kYnV4a3dyaHVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTM2MzM0NjMsImV4cCI6MjAyOTIwOTQ2M30.P7qWts85gx1vRiSVGyjSHNXK6Tbe8h_nFfGdzz66-BA";
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
+
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 app.use(cors());
