@@ -21,7 +21,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "docs", "index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.get("/diario", async (req, res) => {
