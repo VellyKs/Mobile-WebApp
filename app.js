@@ -66,3 +66,6 @@ app.post("/diario", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
+
+
+module.exports = app;
