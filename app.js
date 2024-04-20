@@ -5,9 +5,7 @@ const path = require("path");
 const { createClient } = require("@supabase/supabase-js");
 const dotenv = require("dotenv");
 
-
 dotenv.config();
-
 
 // Criando uma instância do aplicativo Express
 const app = express();
@@ -31,12 +29,13 @@ app.get("/", (req, res) => {
 
 app.get("/diario", async (req, res) => {
   try {
-    const { data, error } = await supabase.from("diario").select("*");
+    let { data: diario, error } = await supabase.from("diario").select("*");
+
     if (error) {
       throw error;
     }
-    res.json(data);
-    console.log("Dados do diário:", data);
+    res.json(diario);
+    console.log("Dados do diário:", diario);
   } catch (error) {
     console.error("Erro ao recuperar dados da tabela diario:", error.message);
     res.status(500).json({ error: "Erro interno do servidor" });
@@ -50,7 +49,7 @@ app.post("/diario", async (req, res) => {
 
     // Inserir os dados na tabela diario
     const { data, error } = await supabase.from("diario").insert(respo);
-    
+
     if (error) {
       throw error;
     }
