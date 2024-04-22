@@ -61,6 +61,17 @@ h1 {
   font-family: "titulo";
 }
 
+
+#top{
+  width: 90%;
+  position: fixed;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+
+
 /*------ Settings ------*/
 .container {
   --size: 30px;
@@ -75,13 +86,11 @@ h1 {
 }
 
 .container .moon {
-  position: absolute;
   animation: keyframes-fill 0.5s;
   fill: var(--background-color-dark);
 }
 
 .container .sun {
-  position: absolute;
   display: none;
   animation: keyframes-fill 0.5s;
   fill: var(--background-color-light);
@@ -116,6 +125,81 @@ h1 {
     transform: rotate(25deg);
   }
 }
+
+
+
+
+/* The switch - the box around the speaker*/
+.toggleSwitch {
+  height: 50px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: end;
+  cursor: pointer;
+  transition-duration: .3s;
+  overflow: hidden;
+}
+
+/* Hide default HTML checkbox */
+#checkboxInput {
+  display: none;
+}
+
+.bell {
+  width: 18px;
+}
+
+.bell path {
+  fill: var(--speaker-color);
+}
+
+.speaker {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition-duration: .3s;
+}
+
+.speaker svg {
+  width: 30px;
+}
+
+.mute-speaker {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  z-index: 3;
+  transition-duration: .3s;
+}
+
+.mute-speaker svg {
+  width: 30px;
+}
+
+#checkboxInput:checked +.toggleSwitch .speaker {
+  opacity: 0;
+  transition-duration: .3s;
+}
+
+#checkboxInput:checked +.toggleSwitch .mute-speaker {
+  opacity: 1;
+  transition-duration: .3s;
+}
+
+#checkboxInput:active + .toggleSwitch {
+  transform: scale(0.7);
+}
+
+
 
 /* @media screen and (prefers-color-scheme: dark) {
     body {
@@ -157,6 +241,7 @@ h1 {
   --font-li: #f4ebdc;
   --font-data: #f4ebdc;
   --background-li: #7866c696;
+  --speaker-color: #fabfcf;
   --theme: var(--background-color-dark);
 
   & #write {
@@ -195,6 +280,7 @@ h1 {
   background-color: var(--background-color-light);
   --font-li: #f5f4fb;
   --background-li: var(--font-data);
+  --speaker-color: #46467a;
   --theme: var(--background-color-light);
 
   & #write {

@@ -277,8 +277,29 @@ const saveSonho = () => {
   modo = "create";
 };
 
+
+// =============== audio ================================
+
+
+const somzin =  () =>{
+  const input = document.getElementById("checkboxInput")
+  const audio = new Audio('assets/audios/audio.mp3');
+  if(input.checked){
+    audio.play();
+  }else{
+    audio.muted = true;
+  }
+}
+
+
+
+
+
 document.getElementById("send").addEventListener("click", saveSonho);
 document.getElementById("new").addEventListener("click", openModal);
 document.getElementById("closeModal").addEventListener("click", closeModal);
+document.getElementById("checkboxInput").addEventListener("click", somzin);
 document.addEventListener("DOMContentLoaded", readSonhos);
 document.addEventListener("DOMContentLoaded", vazio);
+
+
