@@ -29,8 +29,8 @@ app.get("/", (req, res) => {
 
 app.get("/diario", async (req, res) => {
   try {
-    let { data: diario, error } = await supabase.from("diario").select("*").order("TO_DATE(data, 'DD/MM/YY') || ' ' || TO_TIMESTAMP(hora, 'HH24:MI')", { ascending: true });
-    if (error) {
+    let { data: diario, error } = await supabase.from("diario").select("*").order([{ by: "data", ascending: false }, { by: "hora", ascending: false }]);
+      if (error) {
       throw error;
     }
     res.json(diario);
