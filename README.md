@@ -26,5 +26,7 @@ Realizaçao do deploy.
 # OBS:
 O BANCO AINDA NÃO TEM AUTENTICAÇÃO. Tudo adicionado vai para o mesmo banco e pode ser acessado por qualquer um. __Apenas utilizar para testes!!__
 
+## Futuras melhorias:
+Adicionar autenticação por usuário, terminar funções do CRUD
 
   
