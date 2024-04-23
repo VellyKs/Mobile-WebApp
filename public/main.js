@@ -283,11 +283,12 @@ const saveSonho = () => {
 
 const somzin =  () =>{
   const input = document.getElementById("checkboxInput")
-  const audio = new Audio('assets/audios/audio.mp3');
+  const audio = document.getElementById("fundoAudio");
   if(input.checked){
-    audio.play();
-  }else{
     audio.muted = true;
+  }else{
+    audio.muted = false;
+    audio.play();
   }
 }
 
