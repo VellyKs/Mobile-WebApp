@@ -29,8 +29,8 @@ app.get("/", (req, res) => {
 
 app.get("/diario", async (req, res) => {
   try {
-    let { data: diario, error } = await supabase.from("diario").select("*").order([{ by: "data", ascending: false }, { by: "hora", ascending: false }]);
-      if (error) {
+    let { data: diario, error } = await supabase.from("diario").select("*").order("id", { ascending: false });      
+    if (error) {
       throw error;
     }
     res.json(diario);
